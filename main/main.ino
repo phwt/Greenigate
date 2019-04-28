@@ -8,9 +8,6 @@
 
 #include <BlynkSimpleEsp8266.h>
 
-char auth[] = "6c4178abbcec4ec0af60edc3c90b2784";
-
-
 int pin_pump = D1;
 int pin_btn = D7;
 int pin_led = D8;
@@ -25,6 +22,8 @@ void pumpOn(int length){
 }
 
 WiFiManager wifiManager;
+char blynk_token[34] = "YOUR_TOKEN_HERE";
+WiFiManagerParameter custom_blynk_token("blynk_token", "Blynk Token", blynk_token, 34);
 
 void setup() {
     Serial.begin(115200);
@@ -32,43 +31,41 @@ void setup() {
     pinMode(pin_pump, OUTPUT);
     pinMode(pin_led, OUTPUT);
     pinMode(pin_btn, INPUT_PULLUP);
+    pinMode(pin_soil, INPUT);
 
     digitalWrite(pin_led, HIGH);
 
-    // WiFiManagerParameter custom_text("<p>This is just a text paragraph</p>");
-    // wifiManager.addParameter(&custom_text);
-
+    wifiManager.addParameter(&custom_blynk_token);
     wifiManager.autoConnect("Greenigate-01", "P@ssw0rd");
 
     digitalWrite(pin_led, LOW);
-    // Serial.println();
-    Blynk.begin(auth, "xxxx", "xxxx", "blynk.iot-cm.com", 8080);
-}
 
-BLYNK_WRITE(V5){
-    int pinValue = param.asInt();
-    if(pinValue){
-        pumpOn(2000);
-    }
-    // Serial.println(pinValue);
+    strcpy(blynk_token, custom_blynk_token.getValue());
+    Blynk.begin(blynk_token, WiFi.SSID().c_str(), WiFi.psk().c_str(), "blynk.iot-cm.com", 8080);
 }
 
 void loop() {
 
     Blynk.run();
 
+    //WiFi reset button
     if(!digitalRead(pin_btn)){
         wifiManager.resetSettings();
         Serial.println("pushed");
-        resetFunc();
+        // resetFunc();
+        ESP.restart();
     }
 
-    // pumpOn(2000);
-
-    // Serial.println("new");
-    // digitalWrite(pin_pump, HIGH);
-    // delay(2000);
-    // digitalWrite(pin_pump, LOW);
-
     delay(50);
+}
+
+//Manual watering
+BLYNK_WRITE(V5) {
+    int pinValue = param.asInt();
+    digitalWrite(pin_pump, pinValue);
+}
+
+//Send moisture readings
+BLYNK_READ(V6) {
+    Blynk.virtualWrite(V6, map(analogRead(pin_soil), 250, 1024, 0 ,100));
 }
