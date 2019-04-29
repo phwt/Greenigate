@@ -7,6 +7,8 @@
 #define BLYNK_PRINT Serial
 
 #include <BlynkSimpleEsp8266.h>
+#include <TimeLib.h>
+#include <WidgetRTC.h>
 
 // #include <EEPROM.h>
 
@@ -15,6 +17,12 @@ int pin_btn = D7;
 int pin_led = D8;
 int pin_soil = A0;
 
+int timeset = 0;
+int timenow = 0;
+
+BlynkTimer timer;
+WidgetRTC rtc;
+
 void(* resetFunc) (void) = 0;
 
 // bool shouldSaveConfig = false;
@@ -22,6 +30,15 @@ void(* resetFunc) (void) = 0;
 //   Serial.println("Should save config");
 //   shouldSaveConfig = true;
 // }
+
+void clockDisplay(){
+  // You can call hour(), minute(), ... at any time
+  // Please see Time library examples for details
+    timenow = hour() * 3600 + minute() * 60;
+//   String currentTime = String(hour()) + ":" + minute() + ":" + second();
+//   Serial.print("Current time: ");
+//   Serial.println(currentTime);
+}
 
 void pumpOn(int length){
     digitalWrite(pin_pump, HIGH);
@@ -32,6 +49,16 @@ void pumpOn(int length){
 WiFiManager wifiManager;
 char blynk_token[34] = "6c4178abbcec4ec0af60edc3c90b2784";
 // WiFiManagerParameter custom_blynk_token("blynk_token", "Blynk Token", blynk_token, 34);
+
+BLYNK_CONNECTED() {
+  // Synchronize time on connection
+  rtc.begin();
+  Blynk.syncAll();
+}
+
+BLYNK_APP_CONNECTED() {
+  Blynk.syncAll();
+}
 
 void setup() {
     Serial.begin(115200);
@@ -59,11 +86,18 @@ void setup() {
     Serial.println(blynk_token);
 
     Blynk.begin(blynk_token, WiFi.SSID().c_str(), WiFi.psk().c_str(), "blynk.iot-cm.com", 8080);
+
+    Blynk.syncVirtual(V7);
+
+    setSyncInterval(10 * 60); // Sync interval in seconds (10 minutes)
+    // Display digital clock every 10 seconds
+    timer.setInterval(10000L, clockDisplay);
 }
 
 void loop() {
 
     Blynk.run();
+    timer.run();
 
     //WiFi reset button
     if(!digitalRead(pin_btn)){
@@ -73,40 +107,15 @@ void loop() {
         ESP.restart();
     }
 
+    Serial.print(timeset);
+    Serial.print(" ");
+    Serial.println(timenow);
+
+    if(timeset == timenow){
+        Blynk.notify("Watering Plant");
+    }
+
     delay(50);
 }
 
 // WidgetLED led1(V5);
-
-//Manual watering
-BLYNK_WRITE(V5) {
-    int pinValue = param.asInt();
-    digitalWrite(pin_pump, pinValue);
-    // if(pinValue){led1.on();}else{led1.off();}
-}
-
-//Send moisture readings
-BLYNK_READ(V6) {
-    Blynk.virtualWrite(V6, map(analogRead(pin_soil), 250, 1024, 0 ,100));
-}
-
-//Read time from application
-BLYNK_WRITE(V7){
-    int pinValue = param.asInt();
-    Blynk.virtualWrite(V7, pinValue);
-    Serial.println(pinValue);
-}
-
-//Read target humidity from application
-BLYNK_WRITE(V8){
-    int pinValue = param.asInt();
-    Blynk.virtualWrite(V8, pinValue);
-    Serial.println(pinValue);
-}
-
-//Read water amount from application
-BLYNK_WRITE(V9){
-    int pinValue = param.asInt();
-    Blynk.virtualWrite(V9, pinValue);
-    Serial.println(pinValue);
-}
