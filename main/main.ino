@@ -19,6 +19,11 @@ int pin_soil = A0;
 
 int timeset = 0;
 int timenow = 1;
+int humidset = 0;
+int humidnow = 1;
+int waterset;
+
+bool humidnotify = true;
 
 BlynkTimer timer;
 WidgetRTC rtc;
@@ -110,11 +115,21 @@ void loop() {
     Serial.println(timenow);
 
     if(timeset == timenow){
-        Blynk.notify("Watering Plant");
+        if(humidnow > 80){
+            Blynk.notify("The plant was not watered as the humidity is too high.");
+        }else{
+            Blynk.notify("Watering Plant...");
+            pumpOn(waterset * 100);
+        }
         delay(60000);
+    }
+
+    if(humidnow < humidset && humidnotify){
+        Blynk.notify("Soil humidity is low considered manual watering.");
+        humidnotify = false;
+    }else if(humidnow >= humidset){
+        humidnotify = true;
     }
 
     delay(50);
 }
-
-// WidgetLED led1(V5);
