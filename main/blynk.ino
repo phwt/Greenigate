@@ -7,7 +7,8 @@ BLYNK_WRITE(V5) {
 
 //Send moisture readings
 BLYNK_READ(V6) {
-    Blynk.virtualWrite(V6, map(analogRead(pin_soil), 1024, 250, 0 ,100));
+    humidnow = map(analogRead(pin_soil), 1024, 250, 0 ,100);
+    Blynk.virtualWrite(V6, humidnow);
 }
 
 //Read time from application
@@ -30,12 +31,16 @@ BLYNK_WRITE(V7){
 BLYNK_WRITE(V8){
     int pinValue = param.asInt();
     Blynk.virtualWrite(V8, pinValue);
+
+    humidset = pinValue;
+
     Serial.println(pinValue);
 }
 
 //Read water amount from application
 BLYNK_WRITE(V9){
     int pinValue = param.asInt();
+    waterset = pinValue;
     Blynk.virtualWrite(V9, pinValue);
     Serial.println(pinValue);
 }
