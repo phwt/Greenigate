@@ -18,7 +18,7 @@ int pin_led = D8;
 int pin_soil = A0;
 
 int timeset = 0;
-int timenow = 0;
+int timenow = 1;
 
 BlynkTimer timer;
 WidgetRTC rtc;
@@ -87,8 +87,6 @@ void setup() {
 
     Blynk.begin(blynk_token, WiFi.SSID().c_str(), WiFi.psk().c_str(), "blynk.iot-cm.com", 8080);
 
-    Blynk.syncVirtual(V7);
-
     setSyncInterval(10 * 60); // Sync interval in seconds (10 minutes)
     // Display digital clock every 10 seconds
     timer.setInterval(10000L, clockDisplay);
@@ -113,6 +111,7 @@ void loop() {
 
     if(timeset == timenow){
         Blynk.notify("Watering Plant");
+        delay(60000);
     }
 
     delay(50);
