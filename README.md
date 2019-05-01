@@ -33,3 +33,8 @@
 - 61070213 [นายวีรพงศ์ ทันจันทึก](https://github.com/veerapong76)
 - 61070239 [นายสหัสวรรษ หิรัญเพชร](https://github.com/maizerocom)
 - 61070350 [นายอริญชย์ อวยเจริญ](https://github.com/arinnaline)
+
+## Assistant Teacher
+
+- ผศ.ดร.กิติ์สุชาต พสุภา
+- ผศ.ดร.ปานวิทย์ ธุวะนุติ
