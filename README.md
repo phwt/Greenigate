@@ -18,8 +18,9 @@
 
 ## Media
 
-- **[YouTube - Greenigate](https://youtu.be/gLr9KiQcmJc)**
-- **Poster [[.ai](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.ai) / [.pdf](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.pdf)]**
+[![alt text](https://raw.githubusercontent.com/phwt/Greenigate/master/media/youube-play.jpg "YouTube video")](https://youtu.be/gLr9KiQcmJc)
+
+### - **Poster [[.ai](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.ai) / [.pdf](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.pdf)]**
 
 ## Built-With
 
