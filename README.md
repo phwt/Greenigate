@@ -29,12 +29,14 @@
 
 ## Our Team
 
-- 61070173 [นายภูวทิตต์ สัมมาวิวัฒน์](https://github.com/phwt)
-- 61070213 [นายวีรพงศ์ ทันจันทึก](https://github.com/veerapong76)
-- 61070239 [นายสหัสวรรษ หิรัญเพชร](https://github.com/maizerocom)
-- 61070350 [นายอริญชย์ อวยเจริญ](https://github.com/arinnaline)
+| ID       | Name               | GitHub                                        |
+|----------|--------------------|-----------------------------------------------|
+| 61070173 | นายภูวทิตต์ สัมมาวิวัฒน์  | [phwt](https://github.com/phwt)               |
+| 61070213 | นายวีรพงศ์ ทันจันทึก    | [veerapong76](https://github.com/veerapong76) |
+| 61070239 | นายสหัสวรรษ หิรัญเพชร | [maizerocom](https://github.com/maizerocom)   |
+| 61070350 | นายอริญชย์ อวยเจริญ   | [arinnaline](https://github.com/arinnaline)   |
 
-## Assistant Teacher
+## Assistant Teacher / Special Thanks
 
 - ผศ.ดร.กิติ์สุชาต พสุภา
 - ผศ.ดร.ปานวิทย์ ธุวะนุติ
