@@ -19,7 +19,7 @@
 ## Media
 
 - **[YouTube - Greenigate](https://youtu.be/gLr9KiQcmJc)**
-- **[Poster](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.ai)**
+- **Poster [[.ai](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.ai) / [.pdf](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.pdf)]**
 
 ## Built-With
 
@@ -29,12 +29,12 @@
 
 ## Our Team
 
-| ID       | Name               | GitHub                                        |
-|----------|--------------------|-----------------------------------------------|
-| 61070173 | นายภูวทิตต์ สัมมาวิวัฒน์  | [phwt](https://github.com/phwt)               |
-| 61070213 | นายวีรพงศ์ ทันจันทึก    | [veerapong76](https://github.com/veerapong76) |
-| 61070239 | นายสหัสวรรษ หิรัญเพชร | [maizerocom](https://github.com/maizerocom)   |
-| 61070350 | นายอริญชย์ อวยเจริญ   | [arinnaline](https://github.com/arinnaline)   |
+|    ID    |        Name        |                     GitHub                    |
+|:--------:|:------------------:|:---------------------------------------------:|
+| 61070173 |  นายภูวทิตต์ สัมมาวิวัฒน์ |        [phwt](https://github.com/phwt)        |
+| 61070213 |   นายวีรพงศ์ ทันจันทึก  | [veerapong76](https://github.com/veerapong76) |
+| 61070239 | นายสหัสวรรษ หิรัญเพชร |  [maizerocom](https://github.com/maizerocom)  |
+| 61070350 |  นายอริญชย์ อวยเจริญ  |  [arinnaline](https://github.com/arinnaline)  |
 
 ## Assistant Teacher / Special Thanks
 
