@@ -15,13 +15,19 @@
 
 ## Media
 
-[![alt text](https://raw.githubusercontent.com/phwt/Greenigate/master/media/youube-play.jpg "YouTube video")](https://youtu.be/gLr9KiQcmJc)
+[![YouTube](https://raw.githubusercontent.com/phwt/Greenigate/master/media/youube-play.jpg "YouTube video")](https://youtu.be/gLr9KiQcmJc)
 
 ### - **Poster [[.ai](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.ai) / [.pdf](https://github.com/phwt/Greenigate/blob/master/media/ai/poster_print.pdf)]**
 
 ## How to use
 
 การติดตั้ง, ตั้งค่าและใช้งานระบบนั้นสามารถดูได้ที่ **[YouTube - Greenigate](https://youtu.be/gLr9KiQcmJc)**
+
+### การติดตั้งส่วน Blynk
+
+สามารถทำการสแกน QR Code นี้ผ่านแอพฯ Blynk เพื่อติดตั้งส่วนควบคุม Greenigate ผ่านแอพฯ
+
+![QR Code](https://raw.githubusercontent.com/phwt/Greenigate/master/media/bqr.png)
 
 ## Prerequisite
 
